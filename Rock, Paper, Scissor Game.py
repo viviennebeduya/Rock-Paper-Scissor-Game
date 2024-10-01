@@ -33,13 +33,12 @@ user_indicator = Label(root,font=("fixedsys", 25, "bold"),text="PLAYER",bg="#e4e
 comp_indicator = Label(root,font=("fixedsys", 25, "bold"),text="COMPUTER",bg="#e4ebdd",fg="#1a2421").grid(row=0,column=3)
 
 #messages
-msg = Label(root,font=("Arial", 15, "bold"),bg="#e4ebdd",fg="Green")
-msg.grid(row=3,column=2)
+message = Label(root,font=("Arial", 15, "bold"),bg="#e4ebdd",fg="Green")
+message.grid(row=3,column=2)
 
 #update message
-def updateMessage(x):
-    msg['text'] = x
-
+def updateMessage(userChoice):
+    message['text'] = userChoice
 
 #update user score
 def updateUserScore():
@@ -85,7 +84,7 @@ def checkWin(player,computer):
 #update choices
 choices = ["rock","paper","scissor"]
 
-def updateChoice(x):
+def updateChoice(userChoice):
 
 #for computer
     compChoice = choices[randint(0,2)]
@@ -98,14 +97,14 @@ def updateChoice(x):
 
 
 #for user 
-    if x=="rock":
+    if userChoice=="rock":
         user_label.configure(image=rock_img_user)
-    elif x=="paper":
+    elif userChoice=="paper":
         user_label.configure(image=paper_img_user)
     else:
         user_label.configure(image=scissor_img_user)
     
-    checkWin(x,compChoice)
+    checkWin(userChoice,compChoice)
 
 #buttons
 rock = Button(root, width=30,height=2,text="ROCK", 
